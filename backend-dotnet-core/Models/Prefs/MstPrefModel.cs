@@ -1,8 +1,8 @@
 using System;
 
-namespace WebApi.Models.Manufactures
+namespace WebApi.Models.Prefs
 {
-  public class MstManufactureModel
+  public class MstPrefModel
     {
         public int Id { get; set; }
         public string Cd { get; set; }

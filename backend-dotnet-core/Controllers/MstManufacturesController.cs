@@ -6,7 +6,7 @@ using Microsoft.Extensions.Options;
 using Microsoft.AspNetCore.Authorization;
 using WebApi.Services;
 using WebApi.Entities;
-using WebApi.Models.Products;
+using WebApi.Models.Manufactures;
 
 namespace WebApi.Controllers
 {
@@ -43,10 +43,10 @@ namespace WebApi.Controllers
         }
 
         /// <summary>
-        /// Cd が指定の値であるメーカーを返却する
+        /// コードが指定の値であるメーカーを返却する
         /// </summary>
-        /// <returns>条件に合うメーカー</returns>
-        /// <response code="200">条件に合うメーカー</response>
+        /// <returns>指定条件に合うメーカー</returns>
+        /// <response code="200">指定条件に合うメーカー</response>
         [HttpGet("cd/{cd?}")]
         public IActionResult GetByCd(string cd = "")
         {

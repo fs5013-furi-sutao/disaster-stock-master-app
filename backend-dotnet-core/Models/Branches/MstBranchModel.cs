@@ -1,9 +1,8 @@
 using System;
-using System.ComponentModel.DataAnnotations;
 
-namespace WebApi.Entities
+namespace WebApi.Models.Branches
 {
-    public class MstBranche
+  public class MstBranchModel
     {
         public int Id { get; set; }
         public string Cd { get; set; }

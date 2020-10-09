@@ -40,6 +40,7 @@
           <router-link
             v-if="currentUser"
             to="/disaster-stocks/register"
+            :actionName="this.actiionName"
             class="nav-link"
           >
             <font-awesome-icon icon="file" /><span class="px-2">登録</span>
@@ -55,7 +56,9 @@
         </li>
         <li class="nav-item px-2">
           <router-link to="/login" class="nav-link">
-            <font-awesome-icon icon="sign-in-alt" /><span class="px-2">ログイン</span>
+            <font-awesome-icon icon="sign-in-alt" /><span class="px-2"
+              >ログイン</span
+            >
           </router-link>
         </li>
       </div>
@@ -69,7 +72,9 @@
         </li>
         <li class="nav-item px-2">
           <a class="nav-link" href @click.prevent="logOut">
-            <font-awesome-icon icon="sign-out-alt" /><span class="px-2">ログアウト</span>
+            <font-awesome-icon icon="sign-out-alt" /><span class="px-2"
+              >ログアウト</span
+            >
           </a>
         </li>
       </div>
@@ -86,7 +91,8 @@
 export default {
   data() {
     return {
-      siteTitle: '災害備蓄マスタ管理'
+      siteTitle: '災害備蓄マスタ管理',
+      actiionName: '登録',
     };
   },
   computed: {

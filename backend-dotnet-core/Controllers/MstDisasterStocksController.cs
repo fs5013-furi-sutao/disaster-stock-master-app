@@ -6,8 +6,8 @@ using Microsoft.Extensions.Options;
 using Microsoft.AspNetCore.Authorization;
 using WebApi.Services;
 using WebApi.Entities;
-using WebApi.Models.Products;
 using System;
+using WebApi.Models.DisasterStocks;
 
 namespace WebApi.Controllers
 {
@@ -28,6 +28,65 @@ namespace WebApi.Controllers
             _mstDisasterStockService = mstDisasterStockService;
             _mapper = mapper;
             _appSettings = appSettings.Value;
+        }
+
+        [AllowAnonymous]
+        [HttpPost("register")]
+        public IActionResult Register([FromBody] MstDisasterStockModel model)
+        {
+            // map model to entity
+            MstDisasterStock mstDisaster = _mapper.Map<MstDisasterStock>(model);
+
+            try
+            {
+                // create disaster stock
+                _mstDisasterStockService.Create(mstDisaster);
+                return Ok(new
+                {
+                    Id = mstDisaster.Id,
+                    Message = $"備蓄マスタ ID {mstDisaster.Id} を登録しました"
+                });
+            }
+            catch (AppException ex)
+            {
+                // return error message if there was an exception
+                Console.WriteLine(ex);
+                return BadRequest(new { message = $"備蓄マスタ ID  {mstDisaster.Id} はすでに登録されています" });
+            }
+        }
+
+        [AllowAnonymous]
+        [HttpPut("update/{id}")]
+        public IActionResult Update(int id, [FromBody] MstDisasterStockModel model)
+        {
+            // map model to entity and set id
+            MstDisasterStock mstDisasterStock = _mapper.Map<MstDisasterStock>(model);
+            mstDisasterStock.Id = id;
+
+            try
+            {
+                // update user 
+                _mstDisasterStockService.Update(mstDisasterStock);
+                return Ok();
+            }
+            catch (AppException ex)
+            {
+                // return error message if there was an exception
+                return BadRequest(new { message = ex.Message });
+            }
+        }
+
+        /// <summary>
+        /// 指定された ID の災害備蓄マスタを返却する
+        /// </summary>
+        /// <returns>条件に合う災害備蓄マスタ</returns>
+        /// <response code="200">条件に合う災害備蓄マスタ</response>
+        [HttpGet("id/{id}")]
+        public IActionResult GetById(int id)
+        {
+            MstDisasterStock mstDisasterStock = _mstDisasterStockService.GetById(id);
+            MstDisasterStockModel model = _mapper.Map<MstDisasterStockModel>(mstDisasterStock);
+            return Ok(model);
         }
 
         /// <summary>

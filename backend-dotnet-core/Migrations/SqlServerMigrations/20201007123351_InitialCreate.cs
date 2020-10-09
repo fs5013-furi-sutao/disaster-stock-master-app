@@ -34,6 +34,7 @@ namespace WebApi.Migrations.SqlServerMigrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     ProductCd = table.Column<string>(nullable: false),
                     SavingStockKbn = table.Column<string>(nullable: false),
+                    PrefCd = table.Column<string>(nullable: true),
                     BranchCd = table.Column<string>(nullable: true),
                     Quantity = table.Column<int>(nullable: false),
                     StockStartDate = table.Column<DateTime>(nullable: false),

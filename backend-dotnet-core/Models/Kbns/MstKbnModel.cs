@@ -1,6 +1,6 @@
 using System;
 
-namespace WebApi.Models.Products
+namespace WebApi.Models.Kbns
 {
   public class MstKbnModel
     {

@@ -5,11 +5,13 @@ namespace WebApi.Entities
 {
     public class MstDisasterStock
     {
+        
         public int Id { get; set; }
         [Required]
         public string ProductCd { get; set; }
         [Required]
         public string SavingStockKbn { get; set; }
+        public string PrefCd { get; set; }
         public string BranchCd { get; set; }
         [Required]
         public int Quantity { get; set; }

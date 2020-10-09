@@ -73,7 +73,7 @@ export const router = new Router({
       component: () => import('./views/DisasterStockRegister.vue')
     },
     {
-      path: '/disaster-stocks/edit',
+      path: '/disaster-stocks/:id/edit',
       name: 'disaster-stock-edit',
       meta: {
         title: '災害備蓄マスタ編集',

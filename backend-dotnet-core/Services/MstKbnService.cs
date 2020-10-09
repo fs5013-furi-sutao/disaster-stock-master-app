@@ -8,10 +8,8 @@ namespace WebApi.Services
 {
     public interface IMstKbnService
     {
-        // IEnumerable<MstKbn> GetAll();
-        // // IEnumerable<MstProduct> GetByName(string name);
-        // MstKbn GetByCd(string cd);
         IEnumerable<MstKbn> GetByKbn(string kbn);
+        MstKbn GetByKbnAndCd(string kbn, string cd);
     }
 
     public class MstKbnService : IMstKbnService
@@ -23,19 +21,17 @@ namespace WebApi.Services
             _context = context;
         }
 
-        // public IEnumerable<MstKbn> GetAll()
-        // {
-        //     return _context.MstKbns;
-        // }
-
         public IEnumerable<MstKbn> GetByKbn(string kbn)
         {
             return _context.MstKbns.ToList().Where(x => x.Kbn == kbn).OrderBy(x => x.Cd);
         }
 
-        // public MstKbn GetByCd(string cd)
-        // {
-        //     return _context.MstKbns.ToList().Where(x => x.Cd == cd).SingleOrDefault();
-        // }
+        public MstKbn GetByKbnAndCd(string kbn, string cd)
+        {
+            return _context.MstKbns
+            .Where(x => x.Kbn == kbn)
+            .Where(x => x.Cd == cd)
+            .OrderBy(x => x.Cd).SingleOrDefault();
+        }
     }
 }

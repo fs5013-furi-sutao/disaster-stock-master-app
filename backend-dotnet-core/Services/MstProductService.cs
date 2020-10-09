@@ -8,8 +8,9 @@ namespace WebApi.Services
     public interface IMstProductService
     {
         IEnumerable<MstProduct> GetAll();
-        IEnumerable<MstProduct> GetByName(string name);
+        MstProduct GetById(int id);
         MstProduct GetByCd(string cd);
+        IEnumerable<MstProduct> GetByName(string name);
     }
 
     public class MstProductService : IMstProductService
@@ -24,6 +25,11 @@ namespace WebApi.Services
         public IEnumerable<MstProduct> GetAll()
         {
             return _context.MstProducts;
+        }
+
+        public MstProduct GetById(int id)
+        {
+            return _context.MstProducts.Where(x => x.Id == id).SingleOrDefault();
         }
 
         public MstProduct GetByCd(string cd)

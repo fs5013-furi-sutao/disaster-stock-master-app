@@ -86,6 +86,8 @@ namespace WebApi
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<IMstProductService, MstProductService>();
             services.AddScoped<IMstManufactureService, MstManufactureService>();
+            services.AddScoped<IMstPrefService, MstPrefService>();
+            services.AddScoped<IMstBranchService, MstBranchService>();
             services.AddScoped<IMstKbnService, MstKbnService>();
             services.AddScoped<IMstDisasterStockService, MstDisasterStockService>();
 
@@ -97,18 +99,6 @@ namespace WebApi
                     Version = "v1",
                     Title = "Disaster stock master maintenance API",
                     Description = "災害備蓄マスタ管理 API",
-                    TermsOfService = new Uri("https://example.com/terms"),
-                    Contact = new OpenApiContact
-                    {
-                        Name = "Shayne Boyer",
-                        Email = string.Empty,
-                        Url = new Uri("https://twitter.com/spboyer"),
-                    },
-                    License = new OpenApiLicense
-                    {
-                        Name = "Use under LICX",
-                        Url = new Uri("https://example.com/license"),
-                    }
                 });
 
                 // Swagger の JSON と UI のコメントパスを設定する

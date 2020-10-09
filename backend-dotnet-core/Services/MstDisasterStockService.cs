@@ -8,6 +8,9 @@ namespace WebApi.Services
 {
     public interface IMstDisasterStockService
     {
+        MstDisasterStock Create(MstDisasterStock disasterStock);
+        void Update(MstDisasterStock param);
+        MstDisasterStock GetById(int id);
         IEnumerable<MstDisasterStock> GetBySearchConditions(
             string productCd, string savingStockKbn, DateTime? stockStartDate, DateTime? stockEndDate);
     }
@@ -19,6 +22,30 @@ namespace WebApi.Services
         public MstDisasterStockService(DataContext context)
         {
             _context = context;
+        }
+
+        public MstDisasterStock Create(MstDisasterStock disasterStock)
+        {
+            _context.MstDisasterStocks.Add(disasterStock);
+            _context.SaveChanges();
+
+            return disasterStock;
+        }
+
+        public MstDisasterStock GetById(int id)
+        {
+            return _context.MstDisasterStocks.Find(id);
+        }
+
+        public void Update(MstDisasterStock param)
+        {
+            MstDisasterStock mstDisasterStock = _context.MstDisasterStocks.Find(param.Id);
+
+            if (mstDisasterStock == null)
+                throw new AppException("User not found");
+
+            _context.MstDisasterStocks.Update(param);
+            _context.SaveChanges();
         }
 
         public IEnumerable<MstDisasterStock> GetBySearchConditions(

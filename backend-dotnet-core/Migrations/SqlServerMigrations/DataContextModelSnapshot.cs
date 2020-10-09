@@ -19,7 +19,7 @@ namespace WebApi.Migrations.SqlServerMigrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("WebApi.Entities.MstBranche", b =>
+            modelBuilder.Entity("WebApi.Entities.MstBranch", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -67,6 +67,9 @@ namespace WebApi.Migrations.SqlServerMigrations
 
                     b.Property<int?>("CreatedUserId")
                         .HasColumnType("int");
+
+                    b.Property<string>("PrefCd")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ProductCd")
                         .IsRequired()

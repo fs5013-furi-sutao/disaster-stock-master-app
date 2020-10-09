@@ -10,7 +10,7 @@ using WebApi.Helpers;
 namespace WebApi.Migrations.SqlServerMigrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20201006120628_InitialCreate")]
+    [Migration("20201007123351_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -21,7 +21,7 @@ namespace WebApi.Migrations.SqlServerMigrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("WebApi.Entities.MstBranche", b =>
+            modelBuilder.Entity("WebApi.Entities.MstBranch", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -69,6 +69,9 @@ namespace WebApi.Migrations.SqlServerMigrations
 
                     b.Property<int?>("CreatedUserId")
                         .HasColumnType("int");
+
+                    b.Property<string>("PrefCd")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ProductCd")
                         .IsRequired()

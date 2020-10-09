@@ -8,24 +8,41 @@
 </template>
 
 <script>
+import { api } from '../services/api.service';
 import DisasterStockForm from '../components/DisasterStockForm.vue';
 export default {
   name: 'DisasterStockEdit',
   components: {
     'disaster-stock-form': DisasterStockForm
   },
-  props: {
-    actionName: {
-      type: String,
-      required: true,
-      default: () => {
-        return '編集';
-      }
-    }
+  data() {
+    return {
+      actionName: '編集'
+    };
   },
   computed: {
     currentUser() {
       return this.$store.state.auth.user;
+    }
+  },
+  methods: {
+    async createOrUpdate(disasterStock) {
+      console.log('disasterStock=')
+      console.log(disasterStock)
+      alert('bbb')
+      disasterStock.createdAt = new Date();
+      disasterStock.updatedAt = new Date();
+      const resDisasterStock = await api.updateDisasterStock(disasterStock);
+      console.log('resDisasterStock=');
+      console.log(resDisasterStock);
+      this.flash('disasterStock updated', 'success');
+
+      this.$router
+        .push({
+          name: 'disaster-stock-search',
+          params: { message: resDisasterStock.message }
+        })
+        .catch(() => {});
     }
   },
   mounted() {

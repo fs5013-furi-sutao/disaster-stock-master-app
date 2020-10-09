@@ -1,12 +1,14 @@
 using System;
+using System.ComponentModel.DataAnnotations;
 
-namespace WebApi.Models.Manufactures
+namespace WebApi.Entities
 {
-  public class MstManufactureModel
+    public class MstBranch
     {
         public int Id { get; set; }
         public string Cd { get; set; }
         public string Name { get; set; }
+        public string PrefCd { get; set; }
         public DateTime? CreatedAt { get; set; }
         public int? CreatedUserId { get; set; }
         public DateTime? UpdatedAt { get; set; }

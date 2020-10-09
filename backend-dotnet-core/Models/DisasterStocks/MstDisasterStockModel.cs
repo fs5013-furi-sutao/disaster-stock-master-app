@@ -1,7 +1,7 @@
 using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace WebApi.Models.Products
+namespace WebApi.Models.DisasterStocks
 {
   public class MstDisasterStockModel
     {
@@ -10,6 +10,7 @@ namespace WebApi.Models.Products
         public string ProductCd { get; set; }
         [Required]
         public string SavingStockKbn { get; set; }
+        public string PrefCd { get; set; }
         public string BranchCd { get; set; }
         [Required]
         public int Quantity { get; set; }

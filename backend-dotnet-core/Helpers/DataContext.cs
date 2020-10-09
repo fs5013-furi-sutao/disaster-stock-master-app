@@ -25,7 +25,7 @@ namespace WebApi.Helpers
         public DbSet<MstProduct> MstProducts { get; set; }
         public DbSet<MstManufacture> MstManufactures { get; set; }
         public DbSet<MstPref> MstPrefs { get; set; }
-        public DbSet<MstBranche> MstBranches { get; set; }
+        public DbSet<MstBranch> MstBranches { get; set; }
 
         // protected override void OnModelCreating(ModelBuilder builder)
         // {
