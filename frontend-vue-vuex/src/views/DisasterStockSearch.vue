@@ -322,9 +322,6 @@ export default {
   },
   async mounted() {
     this.message = this.$route.params.message;
-    console.log('this.message=');
-    console.log(this.message);
-    
 
     if (!this.currentUser) {
       this.$router.push('/login');

@@ -495,8 +495,6 @@ export default {
         stockConditionCdValue:
           stockConditionKbn.cd + ': ' + stockConditionKbn.value
       };
-      console.log(disasterStockJson.stockStartDate);
-      console.log(this.disasterStock.stockStartDate);
     },
     parseDateToString: function(date) {
       // var date = new Date();

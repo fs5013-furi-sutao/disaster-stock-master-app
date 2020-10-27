@@ -111,10 +111,6 @@ export const api = {
 
   // DisasterStocks
   createDisasterStock: handleError(async payload => {
-    console.log('payload=');
-    console.log(payload);
-    console.log(new Date());
-
     const record = {
       id: 0,
       productCd: payload.productCd,
@@ -137,15 +133,9 @@ export const api = {
       baseURL + 'MstDisasterStocks/register',
       record
     );
-    console.log('res=');
-    console.log(res);
     return res.data;
   }),
   updateDisasterStock: handleError(async payload => {
-    console.log('payload=');
-    console.log(payload);
-    console.log(new Date());
-
     const record = {
       id: payload.id,
       productCd: payload.productCd,
@@ -168,8 +158,6 @@ export const api = {
       baseURL + 'MstDisasterStocks/update/' + payload.id,
       record
     );
-    console.log('res=');
-    console.log(res);
     return res.data;
   }),
   getDisasterStockById: handleError(async id => {

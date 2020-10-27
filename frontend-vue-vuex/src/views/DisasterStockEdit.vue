@@ -27,14 +27,9 @@ export default {
   },
   methods: {
     async createOrUpdate(disasterStock) {
-      console.log('disasterStock=')
-      console.log(disasterStock)
-      alert('bbb')
       disasterStock.createdAt = new Date();
       disasterStock.updatedAt = new Date();
       const resDisasterStock = await api.updateDisasterStock(disasterStock);
-      console.log('resDisasterStock=');
-      console.log(resDisasterStock);
       this.flash('disasterStock updated', 'success');
 
       this.$router
